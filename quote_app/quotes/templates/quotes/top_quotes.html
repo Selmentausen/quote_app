@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Top Quotes</title>
+</head>
+<body>
+    <h1>Top 10 Quotes</h1>
+    <ul>
+        {% for quote in top_quotes %}
+            <li>{{ quote.text }} - {{ quote.source.name }} (Likes: {{ quote.likes }})</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'random_quote' %}">Back to Random Quote</a>
+</body>
+</html>

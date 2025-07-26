@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Quote</title>
+</head>
+<body>
+    <h1>Random Quote</h1>
+    <p>Views: {{ view_counter.views }}</p>
+    {% if quote %}
+        <blockquote>{{ quote.text }}</blockquote>
+        <p>Source: {{ quote.source.name }}</p>
+        <p>Likes: {{ quote.likes }} | Dislikes: {{ quote.dislikes }}</p>
+        {% if user_vote %}
+            <p>You have already voted: {{ user_vote }}</p>
+        {% else %}
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="quote_id" value="{{ quote.id }}">
+                <button type="submit" name="vote_type" value="like">Like</button>
+                <button type="submit" name="vote_type" value="dislike">Dislike</button>
+            </form>
+        {% endif %}
+    {% else %}
+        <p>No quotes available.</p>
+    {% endif %}
+    <a href="{% url 'top_quotes' %}">Top Quotes</a>
+</body>
+</html>
