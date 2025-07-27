@@ -1,10 +1,11 @@
 import random
 
-from django.db.models import F
+from django.db.models import F, ExpressionWrapper, FloatField
 from django.shortcuts import render, redirect
+from django.contrib import messages
 
 from .forms import QuoteForm
-from .models import Quote, ViewCounter
+from .models import Quote, ViewCounter, Source
 
 
 # Create your views here.
@@ -44,8 +45,33 @@ def random_quote(request):
 
 
 def top_quotes(request):
-    top_quotes = Quote.objects.order_by('-likes')[:10]
-    context = {"top_quotes": top_quotes}
+    source_id = request.GET.get('source', '')
+    sort_by = request.GET.get('sort_by', 'likes')
+    quotes = Quote.objects.all()
+    if source_id and source_id != 'all':
+        quotes = quotes.filter(source_id=source_id)
+
+    if sort_by == 'dislikes':
+        quotes = quotes.order_by('-dislikes')
+    elif sort_by == 'ratio':
+        quotes = quotes.annotate(
+            ratio=ExpressionWrapper(
+                F('likes') / (F('likes') + F('dislikes') + 1),
+                output_field=FloatField()
+            )
+        ).order_by('-ratio')
+    else:
+        quotes = quotes.order_by('-likes')
+
+    selected_quotes = quotes[:10]
+    sources = Source.objects.all()
+
+    context = {
+        'top_quotes': selected_quotes,
+        'sources': sources,
+        'selected_source': source_id,
+        "selected_sort": sort_by,
+    }
     return render(request, 'quotes/top_quotes.html', context)
 
 
@@ -56,7 +82,10 @@ def add_quote(request):
             quote = form.save(commit=False)
             quote.source = form.cleaned_data['source']
             quote.save()
+            messages.success(request, 'Quote addeded successfully!')
             return redirect('random_quote')
+        else:
+            messages.error(request, 'Invalid form!')
     else:
         form = QuoteForm()
     return render(request, 'quotes/add_quote.html', {'form': form})

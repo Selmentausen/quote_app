@@ -2,21 +2,54 @@
 {% block title %}Top Quotes{% endblock %}
 {% block content %}
 <h1 class="mb-4">Top 10 Quotes</h1>
+<div class="card mb-4">
+    <div class="card-body">
+        <form method="get" class="row g-3">
+            <div class="col-md-6">
+                <label for="source" class="form-label">Filter by Source</label>
+                <select name="source" id="source" class="form-select">
+                    <option value="all" {% if selected_source == 'all' or not selected_source %}selected{% endif %}>All Sources</option>
+                    {% for source in sources %}
+                        <option value="{{ source.id }}" {% if selected_source == source.id|stringformat:"s" %}selected{% endif %}>{{ source.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Sort By</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sort_by" id="sort_likes" value="likes" {% if selected_sort == 'likes' or not selected_sort %}checked{% endif %}>
+                    <label class="form-check-label" for="sort_likes">Most Likes</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sort_by" id="sort_dislikes" value="dislikes" {% if selected_sort == 'dislikes' %}checked{% endif %}>
+                    <label class="form-check-label" for="sort_dislikes">Most Dislikes</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sort_by" id="sort_ratio" value="ratio" {% if selected_sort == 'ratio' %}checked{% endif %}>
+                    <label class="form-check-label" for="sort_ratio">Like/Dislike Ratio</label>
+                </div>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Apply</button>
+            </div>
+        </form>
+    </div>
+</div>
 {% if top_quotes %}
-   <ul class="list-group">
-       {% for quote in top_quotes %}
-           <li class="list-group-item">
-               <blockquote class="blockquote mb-0">
-                   <p>{{ quote.text }}</p>
-                   <footer class="blockquote-footer">{{ quote.source.name }}</footer>
-               </blockquote>
-               <p class="mt-2">Likes: {{ quote.likes }} | Dislikes: {{ quote.dislikes }}</p>
-           </li>
-       {% endfor %}
-   </ul>
+    <ul class="list-group">
+        {% for quote in top_quotes %}
+            <li class="list-group-item">
+                <blockquote class="blockquote mb-0">
+                    <p>{{ quote.text }}</p>
+                    <footer class="blockquote-footer">{{ quote.source.name }}</footer>
+                </blockquote>
+                <p class="mt-2">Likes: {{ quote.likes }} | Dislikes: {{ quote.dislikes }}</p>
+            </li>
+        {% endfor %}
+    </ul>
 {% else %}
-   <div class="alert alert-warning" role="alert">
-       No quotes available yet.
-   </div>
+    <div class="alert alert-warning" role="alert">
+        No quotes available for the selected filter.
+    </div>
 {% endif %}
 {% endblock %}
