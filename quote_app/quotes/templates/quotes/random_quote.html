@@ -1,28 +1,31 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Random Quote</title>
-</head>
-<body>
-    <h1>Random Quote</h1>
-    <p>Views: {{ view_counter.views }}</p>
-    {% if quote %}
-        <blockquote>{{ quote.text }}</blockquote>
-        <p>Source: {{ quote.source.name }}</p>
-        <p>Likes: {{ quote.likes }} | Dislikes: {{ quote.dislikes }}</p>
-        {% if user_vote %}
-            <p>You have already voted: {{ user_vote }}</p>
-        {% else %}
-            <form method="post">
-                {% csrf_token %}
-                <input type="hidden" name="quote_id" value="{{ quote.id }}">
-                <button type="submit" name="vote_type" value="like">Like</button>
-                <button type="submit" name="vote_type" value="dislike">Dislike</button>
-            </form>
-        {% endif %}
-    {% else %}
-        <p>No quotes available.</p>
-    {% endif %}
-    <a href="{% url 'top_quotes' %}">Top Quotes</a>
-</body>
-</html>
+{% extends 'quotes/base.html' %}
+   {% block title %}Random Quote{% endblock %}
+   {% block content %}
+   <h1 class="mb-4">Random Quote</h1>
+   <p class="text-muted">Total Views: {{ view_counter.views }}</p>
+   {% if quote %}
+       <div class="card mb-4">
+           <div class="card-body">
+               <blockquote class="blockquote mb-0">
+                   <p>{{ quote.text }}</p>
+                   <footer class="blockquote-footer">{{ quote.source.name }}</footer>
+               </blockquote>
+               <p class="mt-2">Likes: {{ quote.likes }} | Dislikes: {{ quote.dislikes }}</p>
+               {% if user_vote %}
+                   <p class="text-info">You have already voted: {{ user_vote|capfirst }}</p>
+               {% else %}
+                   <form method="post" class="d-flex gap-2">
+                       {% csrf_token %}
+                       <input type="hidden" name="quote_id" value="{{ quote.id }}">
+                       <button type="submit" name="vote_type" value="like" class="btn btn-success">Like</button>
+                       <button type="submit" name="vote_type" value="dislike" class="btn btn-danger">Dislike</button>
+                   </form>
+               {% endif %}
+           </div>
+       </div>
+   {% else %}
+       <div class="alert alert-warning" role="alert">
+           No quotes available. Add some in the admin or through the form!
+       </div>
+   {% endif %}
+   {% endblock %}% endblock %}

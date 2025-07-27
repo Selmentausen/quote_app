@@ -1,15 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Top Quotes</title>
-</head>
-<body>
-    <h1>Top 10 Quotes</h1>
-    <ul>
-        {% for quote in top_quotes %}
-            <li>{{ quote.text }} - {{ quote.source.name }} (Likes: {{ quote.likes }})</li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'random_quote' %}">Back to Random Quote</a>
-</body>
-</html>
+{% extends 'quotes/base.html' %}
+{% block title %}Top Quotes{% endblock %}
+{% block content %}
+<h1 class="mb-4">Top 10 Quotes</h1>
+{% if top_quotes %}
+   <ul class="list-group">
+       {% for quote in top_quotes %}
+           <li class="list-group-item">
+               <blockquote class="blockquote mb-0">
+                   <p>{{ quote.text }}</p>
+                   <footer class="blockquote-footer">{{ quote.source.name }}</footer>
+               </blockquote>
+               <p class="mt-2">Likes: {{ quote.likes }} | Dislikes: {{ quote.dislikes }}</p>
+           </li>
+       {% endfor %}
+   </ul>
+{% else %}
+   <div class="alert alert-warning" role="alert">
+       No quotes available yet.
+   </div>
+{% endif %}
+{% endblock %}
