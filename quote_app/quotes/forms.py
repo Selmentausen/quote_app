@@ -16,7 +16,7 @@ class QuoteForm(forms.ModelForm):
 
         # check for duplicate quotes
         if Quote.objects.filter(text=text).exists():
-            raise forms.ValidationError("This quote already exists")
+            raise forms.ValidationError("This quote already exists.")
 
         # check for quotes from same source not being more than 3
         source, _ = Source.objects.get_or_create(name=source.strip())

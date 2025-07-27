@@ -82,7 +82,7 @@ def add_quote(request):
             quote = form.save(commit=False)
             quote.source = form.cleaned_data['source']
             quote.save()
-            messages.success(request, 'Quote addeded successfully!')
+            messages.success(request, 'Quote added successfully!')
             return redirect('random_quote')
         else:
             messages.error(request, 'Invalid form!')
