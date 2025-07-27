@@ -3,6 +3,7 @@ import random
 from django.db.models import F
 from django.shortcuts import render, redirect
 
+from .forms import QuoteForm
 from .models import Quote, ViewCounter
 
 
@@ -46,3 +47,16 @@ def top_quotes(request):
     top_quotes = Quote.objects.order_by('-likes')[:10]
     context = {"top_quotes": top_quotes}
     return render(request, 'quotes/top_quotes.html', context)
+
+
+def add_quote(request):
+    if request.method == 'POST':
+        form = QuoteForm(request.POST)
+        if form.is_valid():
+            quote = form.save(commit=False)
+            quote.source = form.cleaned_data['source']
+            quote.save()
+            return redirect('random_quote')
+    else:
+        form = QuoteForm()
+    return render(request, 'quotes/add_quote.html', {'form': form})

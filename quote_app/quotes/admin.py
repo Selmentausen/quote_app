@@ -6,7 +6,8 @@ from .forms import QuoteForm
 # Register your models here.
 class QuoteAdmin(admin.ModelAdmin):
     form = QuoteForm
-    list_dislpay = ('text', 'source', 'weight', 'likes', 'dislikes')
+    list_display = ('text', 'source', 'weight', 'likes', 'dislikes')
+    exclude = ['source']
 
 
 admin.site.register(Source)
