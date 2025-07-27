@@ -1,0 +1,223 @@
+[
+  {
+    "source": "Star Wars",
+    "quotes": [
+      {
+        "text": "May the Force be with you",
+        "weight": 5
+      },
+      {
+        "text": "I find your lack of faith disturbing",
+        "weight": 3
+      },
+      {
+        "text": "Do or do not, there is no try",
+        "weight": 4
+      }
+    ]
+  },
+  {
+    "source": "The Matrix",
+    "quotes": [
+      {
+        "text": "There is no spoon",
+        "weight": 4
+      },
+      {
+        "text": "Follow the white rabbit",
+        "weight": 3
+      },
+      {
+        "text": "You take the red pill, you stay in Wonderland",
+        "weight": 5
+      }
+    ]
+  },
+  {
+    "source": "The Lord of the Rings",
+    "quotes": [
+      {
+        "text": "Not all those who wander are lost",
+        "weight": 4
+      },
+      {
+        "text": "One does not simply walk into Mordor",
+        "weight": 5
+      },
+      {
+        "text": "My other ride is an eagle",
+        "weight": 3
+      }
+    ]
+  },
+  {
+    "source": "Pride and Prejudice",
+    "quotes": [
+      {
+        "text": "It is a truth universally acknowledged...",
+        "weight": 4
+      },
+      {
+        "text": "I could easily forgive his pride...",
+        "weight": 3
+      },
+      {
+        "text": "You must allow me to tell you how ardently...",
+        "weight": 5
+      }
+    ]
+  },
+  {
+    "source": "Harry Potter",
+    "quotes": [
+      {
+        "text": "It does not do to dwell on dreams and forget to live",
+        "weight": 4
+      },
+      {
+        "text": "I solemnly swear I am up to no good",
+        "weight": 3
+      },
+      {
+        "text": "Happiness can be found, even in the darkest of times",
+        "weight": 5
+      }
+    ]
+  },
+  {
+    "source": "The Godfather",
+    "quotes": [
+      {
+        "text": "I'm gonna make him an offer he can't refuse",
+        "weight": 5
+      },
+      {
+        "text": "Leave the gun, take the cannoli",
+        "weight": 3
+      },
+      {
+        "text": "Keep your friends close, but your enemies closer",
+        "weight": 4
+      }
+    ]
+  },
+  {
+    "source": "Dune",
+    "quotes": [
+      {
+        "text": "Fear is the mind-killer",
+        "weight": 5
+      },
+      {
+        "text": "Bless the Maker and His water",
+        "weight": 3
+      },
+      {
+        "text": "The spice must flow",
+        "weight": 4
+      }
+    ]
+  },
+  {
+    "source": "The Great Gatsby",
+    "quotes": [
+      {
+        "text": "So we beat on, boats against the current...",
+        "weight": 4
+      },
+      {
+        "text": "I hope she'll be a fool—that's the best thing...",
+        "weight": 3
+      },
+      {
+        "text": "You can't repeat the past",
+        "weight": 5
+      }
+    ]
+  },
+  {
+    "source": "Inception",
+    "quotes": [
+      {
+        "text": "You mustn't be afraid to dream a little bigger",
+        "weight": 4
+      },
+      {
+        "text": "We need to go deeper",
+        "weight": 3
+      },
+      {
+        "text": "An idea is like a virus",
+        "weight": 5
+      }
+    ]
+  },
+  {
+    "source": "1984",
+    "quotes": [
+      {
+        "text": "Big Brother is watching you",
+        "weight": 5
+      },
+      {
+        "text": "War is peace. Freedom is slavery.",
+        "weight": 3
+      },
+      {
+        "text": "Who controls the past controls the future",
+        "weight": 4
+      }
+    ]
+  },
+  {
+    "source": "The Shawshank Redemption",
+    "quotes": [
+      {
+        "text": "Get busy living, or get busy dying",
+        "weight": 5
+      },
+      {
+        "text": "Hope is a good thing, maybe the best of things",
+        "weight": 4
+      },
+      {
+        "text": "Fear can hold you prisoner. Hope can set you free",
+        "weight": 3
+      }
+    ]
+  },
+  {
+    "source": "To Kill a Mockingbird",
+    "quotes": [
+      {
+        "text": "You never really understand a person until...",
+        "weight": 4
+      },
+      {
+        "text": "The one thing that doesn't abide by majority rule...",
+        "weight": 3
+      },
+      {
+        "text": "People generally see what they look for",
+        "weight": 5
+      }
+    ]
+  },
+  {
+    "source": "The Dark Knight",
+    "quotes": [
+      {
+        "text": "Why so serious?",
+        "weight": 5
+      },
+      {
+        "text": "You either die a hero, or live long enough...",
+        "weight": 4
+      },
+      {
+        "text": "Some men just want to watch the world burn",
+        "weight": 3
+      }
+    ]
+  }
+]
